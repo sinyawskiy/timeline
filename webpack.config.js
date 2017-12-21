@@ -10,7 +10,7 @@ const sourcePath = Path.join(__dirname, './src');
 module.exports = {
   context: sourcePath,
   entry: {
-    main: './index.tsx',
+    main: './index.jsx',
     vendor: [
       'react',
       'react-dom',

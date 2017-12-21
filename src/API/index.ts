@@ -135,7 +135,6 @@ function filterByDate(collection: SortableByDate[], date?: Date) {
 	const sorted = collection.sort((a, b) => +b.date - +a.date);
 	if (date) {
 		const index = sorted.findIndex(v => v.date < date);
-		console.log('index', index);
 		if (index < 0) {
 			return [];
 		} else {
