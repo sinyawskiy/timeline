@@ -2,6 +2,22 @@ import * as Rx from 'rxjs/Rx';
 import faker from 'faker';
 import { setTimeout } from 'timers';
 
+console.log('faker', faker);
+
+const FILE_TYPES = [
+	'.xlsx', '.xlsm', '.xlsb', '.xltm', '.xls', // excel
+	'.pdf',
+	'.mp3', '.aac', '.wav',// sound
+	'.doc', '.docx', // word
+	'.zip', '.7zip', '.rar', // archive,
+	'.jpg', '.png', '.bmp', // image
+	'.txt', '.csv', // text
+	'.bin', '.dll', '.3ds', '.lls', // unknown format
+	'.mp4', '.avi', // video
+	'.js', '.ts', '.cs', '.css', '.html', '.java', '.c', '.h', // code
+	'.ppt', // powerpoint 
+];
+
 const array = (N: number) =>  [...Array(N).keys()];
 
 const PROJECT_COUNT = 10;
@@ -67,7 +83,7 @@ function generateFile(time): File {
 	return {
 		id: Files.length,
 		projectId: faker.random.arrayElement(Projects).id,
-		name: faker.internet.domainName() + '.ppt',
+		name: faker.internet.domainName() + faker.random.arrayElement(FILE_TYPES),
 		userId: faker.random.arrayElement(Users).id,
 		date: time,
 		type: 'file',
@@ -78,7 +94,7 @@ function generateComment(time): Comment {
 	const file = faker.random.arrayElement(Files);
  	return {
 		id: Comments.length,
-		text: faker.internet.domainName() + '.ppt',
+		text: faker.lorem.paragraph(),
 		userId: faker.random.arrayElement(Users).id,
 		fileId: file.id,
 		projectId: file.projectId,
