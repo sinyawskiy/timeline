@@ -27,6 +27,14 @@ npm install
 npm start
 ```
 
+## Submitting
+
+```
+npm run zip
+```
+
+Please, send to us `solution.zip` archive after that.
+
 ## API
 
 To see API usage check `src/API/usage`
