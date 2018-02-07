@@ -2,8 +2,6 @@ import * as Rx from 'rxjs/Rx';
 import faker from 'faker';
 import { setTimeout } from 'timers';
 
-console.log('faker', faker);
-
 const FILE_TYPES = [
 	'.xlsx', '.xlsm', '.xlsb', '.xltm', '.xls', // excel
 	'.pdf',
@@ -161,8 +159,6 @@ function filterByDate(collection: SortableByDate[], date?: Date) {
 	return sorted.slice(0, 10);
 }
 
-// Sun Nov 05 2017 17:56:35 GMT+0200 (GTB Standard Time)
-
 const filterFabric = (f?: File | Project | User) => {
 	if (f === undefined) {
 		return _ => true;
@@ -181,7 +177,12 @@ const filterFabric = (f?: File | Project | User) => {
 
 const timelineFabric = (f?: File | Project | User) => {
 	return {
-		get(before?: Date) {
+		entity() {
+			return new Promise(res => {
+				setTimeout(_ => res(f), 100 + faker.random.number(1000))
+			});
+		},
+		getActivities(before?: Date) {
 			return new Promise((res, rej) => {
 				setTimeout(() => {
 					res(filterByDate(getActivities(f), before))
