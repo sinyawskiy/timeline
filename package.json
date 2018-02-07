@@ -45,6 +45,9 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.2",
+    "@fortawesome/fontawesome-free-regular": "^5.0.4",
+    "@fortawesome/react-fontawesome": "0.0.17",
     "classnames": "^2.2.5",
     "faker": "^4.1.0",
     "jszip-cli": "^1.4.24",
